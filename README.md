@@ -17,13 +17,14 @@ API's and Frameworks used:
 - Volley : HTTP Interfacing Library for Android
 
 GET/POST Requests to Uber/Lyft(API.java)
-
+<br>
 
 - UBER Data Fetch
   - GET /v1/estimates/price (API endpoint)
   - Implemented using Volley queue
   - Server Token passed in via Request header (Overridden method)
 
+<br>
 
 ```Java
 public void doGetForUber(){
@@ -50,13 +51,13 @@ public void doGetForUber(){
 
 ```
 
-
+<br>
 - Lyft Data Fetch
   - GET 'https://api.lyft.com/v1/cost' (API endpoint)
   - Implemented using Volley queue
   - Bearer Token passed in, doPostForLyft -> bearer Token calls doGetForLyft
   
-
+<br>
 ```Java
 public void doGetForLyft(final String bearerToken){
         //function called from doPostLyft function
@@ -79,7 +80,7 @@ public void doGetForLyft(final String bearerToken){
                 ...
 
 ```
-
+<br>
 Other Important Methods:
 - parseStoreLyftResponse(), parseStoreUberResponse() --> both parse JSON responses and store parsed values to HashMap
 - doPostForLyft() --> Needed to generate 24hr valid bearer token needed to authenticate GET calls to Lyft. This function's completion callback calls 'doGetForLyft()'
