@@ -16,6 +16,71 @@ API's and Frameworks used:
 - Lyft REST API [link](https://developer.lyft.com/docs/availability-cost "Lyft API"). To get Lyft data
 - Volley : HTTP Interfacing Library for Android
 
+GET/POST Requests to Uber/Lyft(API.java)
+
+- UBER Data Fetch
+  - GET /v1/estimates/price (API endpoint)
+  - Implemented using Volley queue
+  - Server Token passed in via Request header (Overridden method)
+
+```Java
+public void doGetForUber(){
+        //Get request for uber api
+        RequestQueue queue = Volley.newRequestQueue(c);
+        final String url = "https://api.uber.com/v1/estimates/price?start_latitude="+start_latitude+"&start_longitude="+start_longitude+"&end_latitude="+end_latitude+"&end_longitude="+end_longitude;
+        // prepare the Request
+        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>()
+                {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // display response, callback upon completion
+                        Log.d("Response", response.toString());
+                        
+                        parseStoreUberResponse(response); //Parses and stores JSON reponse to HashMap
+                        
+                        if (!lyftDurations.isEmpty()){
+                            doUIChanges();
+                        }
+                    }
+                }
+                ...
+
+```
+
+- Lyft Data Fetch
+  - GET 'https://api.lyft.com/v1/cost' (API endpoint)
+  - Implemented using Volley queue
+  - Bearer Token passed in, doPostForLyft -> bearer Token calls doGetForLyft
+  
+```Java
+public void doGetForLyft(final String bearerToken){
+        //function called from doPostLyft function
+        RequestQueue queue = Volley.newRequestQueue(c);
+        final String url = "https://api.lyft.com/v1/cost?start_lat="+start_latitude+"&start_lng="+start_longitude+"&end_lat="+end_latitude+"&end_lng="+end_longitude;
+        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>()
+                {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                    
+                        parseStoreLyftResponse(response); //Parses and stores JSON reponse to HashMap
+                        
+                        Log.d("Response", response.toString());
+                        if (!uberDurations.isEmpty()){
+                            doUIChanges();
+                        }
+                    }
+                }
+                ...
+
+```
+
+Other Important Methods:
+- parseStoreLyftResponse(), parseStoreUberResponse() --> both parse JSON responses and store parsed values to HashMap
+- doPostForLyft() --> Needed to generate 24hr valid bearer token needed to authenticate GET calls to Lyft. This function's completion callback calls 'doGetForLyft()'
+- doUIChanges() --> refresh UI spinners, textviews with new data
+- geocodeAddress() --> geocodes Addresses from String to latitudes and longitudes
 
 ## Installation
 
