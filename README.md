@@ -18,10 +18,12 @@ API's and Frameworks used:
 
 GET/POST Requests to Uber/Lyft(API.java)
 
+
 - UBER Data Fetch
   - GET /v1/estimates/price (API endpoint)
   - Implemented using Volley queue
   - Server Token passed in via Request header (Overridden method)
+
 
 ```Java
 public void doGetForUber(){
@@ -48,11 +50,13 @@ public void doGetForUber(){
 
 ```
 
+
 - Lyft Data Fetch
   - GET 'https://api.lyft.com/v1/cost' (API endpoint)
   - Implemented using Volley queue
   - Bearer Token passed in, doPostForLyft -> bearer Token calls doGetForLyft
   
+
 ```Java
 public void doGetForLyft(final String bearerToken){
         //function called from doPostLyft function
