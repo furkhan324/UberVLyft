@@ -83,7 +83,7 @@ public void doGetForLyft(final String bearerToken){
 
 ```
 <br>
-Other Important Methods:
+<h3>Other Important Methods:</h3>
 - parseStoreLyftResponse(), parseStoreUberResponse() --> both parse JSON responses and store parsed values to HashMap
 - doPostForLyft() --> Needed to generate 24hr valid bearer token needed to authenticate GET calls to Lyft. This function's completion callback calls 'doGetForLyft()'
 - doUIChanges() --> refresh UI spinners, textviews with new data
