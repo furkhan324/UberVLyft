@@ -4,7 +4,7 @@
 
 Compare Uber/Lyft services, fares, and duration all in real time. Built for Android(native).
 
-<a href= "https://play.google.com/store/apps/details?id=com.furkhanapps2.furkhan324.myapplication" >Live on Google Play Store</a> (Published as WatchFare because Google Play didn't allow for Uber/Lyft to be in the title)
+<a href= "https://play.google.com/store/apps/details?id=com.furkhanapps2.furkhan324.myapplication" >Live on Google Play Store</a> (Published as "WatchFare")
 
 ## Demo
 
