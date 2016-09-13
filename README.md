@@ -4,6 +4,8 @@
 
 Compare Uber/Lyft services, fares, and duration all in real time. Built for Android(native).
 
+<a href= "https://play.google.com/store/apps/details?id=com.furkhanapps2.furkhan324.myapplication" >Live on Google Play Store</a> (Published as WatchFare because Google Play didn't allow for Uber/Lyft to be in the title)
+
 ## Demo
 
 [![IMAGE ALT TEXT](http://mohammedabdulwahhab.me/readme.gif)](# "UberVLyft Demo")
@@ -26,7 +28,7 @@ GET/POST Requests to Uber/Lyft(API.java)
 
 <br>
 
-```Java
+  ```Java
 public void doGetForUber(){
         //Get request for uber api
         RequestQueue queue = Volley.newRequestQueue(c);
@@ -49,7 +51,7 @@ public void doGetForUber(){
                 }
                 ...
 
-```
+  ```
 
 <br>
 - Lyft Data Fetch
@@ -58,7 +60,7 @@ public void doGetForUber(){
   - Bearer Token passed in, doPostForLyft -> bearer Token calls doGetForLyft
   
 <br>
-```Java
+  ```Java
 public void doGetForLyft(final String bearerToken){
         //function called from doPostLyft function
         RequestQueue queue = Volley.newRequestQueue(c);
